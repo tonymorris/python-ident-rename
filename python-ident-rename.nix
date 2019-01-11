@@ -1,13 +1,16 @@
-{ mkDerivation, base, checkers, filepath, hpython, lens, QuickCheck
-, stdenv, tasty, tasty-hunit, tasty-quickcheck, text
+{ mkDerivation, base, checkers, filepath, hpython, lens
+, optparse-applicative, QuickCheck, semigroupoids, stdenv, tasty
+, tasty-hunit, tasty-quickcheck, text
 }:
 mkDerivation {
   pname = "python-ident-rename";
-  version = "0.1.1";
+  version = "0.0.1";
   src = ./.;
   isLibrary = true;
   isExecutable = true;
-  libraryHaskellDepends = [ base filepath hpython lens text ];
+  libraryHaskellDepends = [
+    base filepath hpython lens optparse-applicative semigroupoids text
+  ];
   executableHaskellDepends = [ base ];
   testHaskellDepends = [
     base checkers lens QuickCheck tasty tasty-hunit tasty-quickcheck
