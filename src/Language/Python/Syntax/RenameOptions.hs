@@ -142,7 +142,7 @@ optRenameOptions =
           (
             short 'o' <>
             long "output" <>
-            help "filename to output to"
+            help "filename to output to (default: stdout)"
           )
   in  RenameOptions <$>
       optIdentifierInputFilename <*>
