@@ -9,7 +9,6 @@ module Language.Python.Syntax.Renamer(
 , renamerPair
 , renamerList
 , renamerList1
-, identifierValues
 , rename
 ) where
 
@@ -22,7 +21,7 @@ import Data.Monoid(Monoid(mappend, mempty))
 import Data.Semigroup(Semigroup((<>)))
 import Data.Semigroup.Foldable(foldMap1)
 import Data.String(String)
-import Language.Python(HasStatements, HasIdents(_Idents), _Statements, _Exprs, _Ident, identValue)
+import Language.Python(HasIdents(_Idents), identValue)
 
 
 newtype Renamer =
@@ -75,12 +74,6 @@ renamerList1 ::
   -> Renamer
 renamerList1 =
   foldMap1 renamerPair
-
-identifierValues ::
-  HasStatements s =>
-  Traversal (s v a) (s '[] a) String String
-identifierValues =
-  _Statements . _Exprs . _Ident . identValue
 
 rename ::
   HasIdents s =>
